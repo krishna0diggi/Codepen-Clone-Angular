@@ -1,19 +1,19 @@
-<p>user-profile works!</p>
+<p>User Profile Management</p>
 <!-- Interpolation -->
-<h1>User Name is {{name}} </h1>
+<!-- <h1>User Name is {{name}} </h1> -->
 
 <!-- Property Binding -->
-<button [disabled]="isDisable">Add me</button>
+<!-- <button [disabled]="isDisable">Add me</button> -->
 
 
 <!-- One Way Binding  -->  
 <!-- When we are getting the inputVal from the function or varibale that we have decalerd. -->
 
-<h1> Current input data is {{inputvAL}}</h1>
+<!-- <h1> Current input data is {{inputvAL}}</h1> -->
 <!-- Two Way data binding  -->
 
 <!-- 1st Way to write the code:  -->
-<input type="text" [value]="inputvAL" (input)="onChange($event)">
+<!-- <input type="text" [value]="inputvAL" (input)="onChange($event)"> -->
 
 <!-- Secong Way to write the code: (Import formsModule in the TS file)  -->  
 <!-- <input type="text" [(ngModel)]="inputvAL"> -->
@@ -23,18 +23,21 @@
 <!-- Directive is used to change the behaviour of the HTML elements.
 For Example: *ngFor,  *ngIf  -->
 
-<h1>All Elements:</h1>
-<div>
+<!-- <h1>All Elements:</h1> -->
+<!-- <div>
     @for(user of users;track user.name){
         <h4> Name - {{user.name}} Aavilability - {{user.isAval?"Yes":"No"}} Salary: {{user.salary}}</h4>
     }
-</div>
+</div> -->
 
 
-<h1>All Elements with Directives loop:</h1>
+<!-- <h1>All Elements with Directives loop:</h1> -->
 <!-- Directives in angular with loop -->
-<div *ngFor="let user of users ">
+<!-- <div *ngFor="let user of users ">
     
     <h5 *ngIf="user.salary > 1000" >Name - {{user.name}} ,   Availability - {{user.isAval}},  Salary - {{user.salary}}</h5>
 
-</div>
+</div> -->
+<!-- {{console.log("Array of userss", "name is ", name,  , "  ", "Single is ", isSingle)}} -->
+
+<h4>Dynamic Names: {{name}},   Status - {{isSingle?"single":"coder"}} , Salary is {{salary}}</h4> 
