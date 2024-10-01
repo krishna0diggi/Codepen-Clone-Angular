@@ -28,4 +28,8 @@ export class AppComponent {
     console.log("Currne sakary of the user", userIndex)
     console.log("This is the new salary for the name:")
   }
+
+  clear() {
+    this.users = []
+  }
 }

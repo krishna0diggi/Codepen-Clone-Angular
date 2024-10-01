@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { booleanAttribute, Component, EventEmitter, Input, numberAttribute, Output } from '@angular/core';
+import { booleanAttribute, Component, EventEmitter, Input, numberAttribute, OnChanges, OnDestroy, OnInit, Output, SimpleChange, SimpleChanges } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HighlightDirective } from '../../directives/highlight.directive';
 
@@ -17,7 +17,8 @@ function formatName (value:string) {
   templateUrl: './user-profile.component.html',
   styleUrl: './user-profile.component.css'
 })
-export class UserProfileComponent {
+export class UserProfileComponent  implements OnInit, OnDestroy, OnChanges{
+ 
 
   @Input({alias: "userName"}) name=""
   @Input({transform: booleanAttribute}) isSingle:boolean;
@@ -28,6 +29,47 @@ export class UserProfileComponent {
   sendData(){
     this.myEvent.emit({name: this.name, newSalary:25000})
   }
+
+   /**
+   * This is the constructor.
+   * It runs when the component is created and logs the name.
+   */
+  constructor() {
+    console.log("Constructor called", this.name)
+  }
+
+
+   /**
+   * This method runs when any input properties change.
+   * It shows a message in the console with the changes.
+   *
+   * @param changes - This tells us what properties changed.
+   */
+  ngOnChanges(changes: SimpleChanges): void {
+    // throw new Error('Method not implemented.');
+    console.log("ngOnChanges is called")
+  }
+
+   /**
+   * This method runs when the component is fully set up.
+   * It’s a good place to do any setup tasks and logs a message with the name.
+   */
+  ngOnInit(): void {
+    console.log("ngOnInit called", this.name)
+  }
+
+   /**
+   * This method runs just before the component is removed from the screen.
+   * Use this to clean up things, like stopping services.
+   * It logs a message when the component is being destroyed.
+   */
+
+  ngOnDestroy() {
+    console.log("Component destroy")
+  }
+
+
+
 
 
 
