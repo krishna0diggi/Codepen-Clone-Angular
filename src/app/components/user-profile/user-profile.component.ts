@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { booleanAttribute, Component, Input } from '@angular/core';
+import { booleanAttribute, Component, EventEmitter, Input, numberAttribute, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HighlightDirective } from '../../directives/highlight.directive';
 
 // const formatName = (value:string) => {
 //   return "Hi" + value;
@@ -12,15 +13,23 @@ function formatName (value:string) {
 @Component({
   selector: 'app-user-profile',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, HighlightDirective],
   templateUrl: './user-profile.component.html',
   styleUrl: './user-profile.component.css'
 })
 export class UserProfileComponent {
 
-  @Input({alias: "userName", transform: formatName}) name=""
+  @Input({alias: "userName"}) name=""
   @Input({transform: booleanAttribute}) isSingle:boolean;
-  @Input() salary!: number;
+  @Input({transform: numberAttribute}) salary: number;
+
+  @Output() myEvent = new EventEmitter<{name:string, newSalary:number}>()
+
+  sendData(){
+    this.myEvent.emit({name: this.name, newSalary:25000})
+  }
+
+
 
 
 
