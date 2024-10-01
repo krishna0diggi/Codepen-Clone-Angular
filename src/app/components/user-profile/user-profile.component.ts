@@ -33,6 +33,7 @@ export class UserProfileComponent  implements OnInit, OnDestroy, OnChanges, Afte
    /**
    * This is the constructor.
    * It runs when the component is created and logs the name.
+   * We are injecting dependecies in the construtor
    */
   constructor() {
     console.log("Constructor called", this.name)
@@ -45,7 +46,7 @@ export class UserProfileComponent  implements OnInit, OnDestroy, OnChanges, Afte
   //  ngOnInt called
   //  ngAfterViewInit called
 
-  
+
 
   // After Ready the Template the ngAfterViewInit is callled: 
   ngAfterViewInit(): void {

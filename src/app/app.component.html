@@ -4,14 +4,16 @@
     <app-user-profile userName="Vipul" [isSingle]="false" [salary]="60000"></app-user-profile>
     <app-user-profile userName="Anuj" [isSingle]="false" [salary]="70000"></app-user-profile> -->
 
-    <app-user-profile *ngFor="let user of users" 
+    <!-- <app-user-profile *ngFor="let user of users" 
     [userName]="user.name"
     [isSingle]="user.isSingle" 
     [salary]="user.salary"
     (myEvent)="receivedData($event)"
     ></app-user-profile>
 
-    <button (click)="clear()">Clear User</button>
+    <button (click)="clear()">Clear User</button> -->
+
+    <app-joke></app-joke>
 </div>
 
 

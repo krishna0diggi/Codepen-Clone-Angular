@@ -3,11 +3,12 @@ import { RouterOutlet } from '@angular/router';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { CommonModule } from '@angular/common';
 import { User } from './model/user';
+import { JokeComponent } from './components/joke/joke.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, UserProfileComponent, CommonModule],
+  imports: [RouterOutlet, UserProfileComponent, CommonModule, JokeComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
