@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { booleanAttribute, Component, EventEmitter, Input, numberAttribute, OnChanges, OnDestroy, OnInit, Output, SimpleChange, SimpleChanges } from '@angular/core';
+import { AfterViewInit, booleanAttribute, Component, ElementRef, EventEmitter, Input, numberAttribute, OnChanges, OnDestroy, OnInit, Output, SimpleChange, SimpleChanges, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HighlightDirective } from '../../directives/highlight.directive';
 
@@ -17,7 +17,7 @@ function formatName (value:string) {
   templateUrl: './user-profile.component.html',
   styleUrl: './user-profile.component.css'
 })
-export class UserProfileComponent  implements OnInit, OnDestroy, OnChanges{
+export class UserProfileComponent  implements OnInit, OnDestroy, OnChanges, AfterViewInit{
  
 
   @Input({alias: "userName"}) name=""
@@ -36,7 +36,23 @@ export class UserProfileComponent  implements OnInit, OnDestroy, OnChanges{
    */
   constructor() {
     console.log("Constructor called", this.name)
+    console.log("Constructor called", this.heading?.nativeElement.textContent)
   }
+
+  // Lifecycle for calling this :
+  //  Contructor called:
+  //  ngOnChanges called
+  //  ngOnInt called
+  //  ngAfterViewInit called
+
+  
+
+  // After Ready the Template the ngAfterViewInit is callled: 
+  ngAfterViewInit(): void {
+    // throw new Error('Method not implemented.');
+    console.log("ngAfterViewInit View Element")
+  }
+  
 
 
    /**
@@ -48,6 +64,7 @@ export class UserProfileComponent  implements OnInit, OnDestroy, OnChanges{
   ngOnChanges(changes: SimpleChanges): void {
     // throw new Error('Method not implemented.');
     console.log("ngOnChanges is called")
+    console.log("ngOnChanges called", this.heading?.nativeElement.textContent)
   }
 
    /**
@@ -56,6 +73,7 @@ export class UserProfileComponent  implements OnInit, OnDestroy, OnChanges{
    */
   ngOnInit(): void {
     console.log("ngOnInit called", this.name)
+    console.log("ngOnInit called", this.heading?.nativeElement.textContent)
   }
 
    /**
@@ -67,6 +85,8 @@ export class UserProfileComponent  implements OnInit, OnDestroy, OnChanges{
   ngOnDestroy() {
     console.log("Component destroy")
   }
+
+  @ViewChild("myheading") heading?:ElementRef
 
 
 
