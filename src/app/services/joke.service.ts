@@ -5,13 +5,12 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class JokeService {
-  http:HttpClient
+  joke = "loading"
 
-  constructor(http:HttpClient) {
-    this.http = http
-   }
+  constructor(private http:HttpClient) {}
 
    getJoke() {
-    
-   }
+    return this.http.get("https://api.chucknorris.io/jokes/random?category=animal")
+    }
+
 }
