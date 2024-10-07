@@ -8,9 +8,10 @@ export class JokeService {
   joke = "loading"
 
   constructor(private http:HttpClient) {}
+  // This is called dependency Injection: 
 
    getJoke() {
     return this.http.get("https://api.chucknorris.io/jokes/random?category=animal")
     }
-
+ 
 }
