@@ -1,0 +1,76 @@
+/* Container styling */
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading styling */
+h4 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Input field styling */
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Input field focus styling */
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #5cb85c;
+    outline: none;
+}
+
+/* Validation alert styling */
+.valied-alert {
+    color: #d9534f;
+    font-size: 14px;
+    margin: 0;
+}
+
+/* Button styling */
+.btn-green {
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btn-red {
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Button hover effect */
+.btn-green:hover {
+    background-color: #4cae4c;
+}
+
+.btn-red:hover {
+    background-color: #c9302c;
+}
