@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -7,8 +7,12 @@ import { Injectable } from '@angular/core';
 export class JokeService {
   joke = "loading"
 
+  // This is called dependency Injection:
+  // Method - 1 
   constructor(private http:HttpClient) {}
-  // This is called dependency Injection: 
+
+  //Method - 2
+  // private http = inject(HttpClient)
 
    getJoke() {
     return this.http.get("https://api.chucknorris.io/jokes/random?category=animal")
