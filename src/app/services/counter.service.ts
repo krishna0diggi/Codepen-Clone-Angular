@@ -12,7 +12,10 @@ export class CounterService {
 
   incrementCount(){
     this.count = this.count + 1
+  }
 
+  decrementCount(){
+    this.count = this.count - 1
   }
 
 }
