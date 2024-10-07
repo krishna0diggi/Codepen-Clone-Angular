@@ -15,6 +15,8 @@ export class JokeService {
   // private http = inject(HttpClient)
 
    getJoke() {
+
+    // It returns Observable - Async line of code it will take time to load
     return this.http.get("https://api.chucknorris.io/jokes/random?category=animal")
     }
  

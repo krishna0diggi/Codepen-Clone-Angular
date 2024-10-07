@@ -37,5 +37,4 @@ export class JokeComponent {
       error:(error)=>console.log("Error aa gya bhai", error)
     })
   }
-
 }
