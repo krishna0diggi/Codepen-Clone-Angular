@@ -1,0 +1,41 @@
+/* Navbar styling */
+nav {
+    background-color: #333; /* Dark background */
+    padding: 10px 20px; /* Padding around the navbar */
+}
+
+nav h2 {
+    display: inline-block;
+    margin: 0; /* Remove default margin */
+    font-size: 24px; /* Font size for the title */
+    color: #fff; /* White text color */
+}
+
+nav ul {
+    list-style-type: none; /* Remove bullet points */
+    margin: 0; /* Remo ve default margin */
+    padding: 0; /* Remove default padding */
+    display: inline-block; /* Aligns the list items inline */
+    float: right; /* Float the menu to the right */
+}
+
+nav ul li {
+    display: inline; /* Display list items inline */
+    margin-left: 20px; /* Space between items */
+}
+
+nav a {
+    text-decoration: none; /* Remove underline from links */
+    color: #fff; /* White text color */
+    padding: 8px 16px; /* Padding around links */
+    transition: background-color 0.3s; /* Smooth background change */
+}
+
+nav a:hover {
+    background-color: #555; /* Darker background on hover */
+}
+
+nav a.active {
+    background-color: #007bff; /* Active link color */
+    border-radius: 4px; /* Rounded corners */
+}

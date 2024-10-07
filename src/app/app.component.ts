@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { CommonModule } from '@angular/common';
 import { User } from './model/user';
@@ -7,11 +7,14 @@ import { JokeComponent } from './components/joke/joke.component';
 import { AComponent } from './components/a/a.component';
 import { B1Component } from './components/b1/b1.component';
 import { B2Component } from './components/b2/b2.component';
+import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, UserProfileComponent, CommonModule, JokeComponent, AComponent,B1Component, B2Component],
+  imports: [RouterOutlet,  NavbarComponent, UserProfileComponent, LoginComponent, SignupComponent, CommonModule, JokeComponent, AComponent,B1Component, B2Component, RouterLink, RouterLinkActive],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
