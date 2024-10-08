@@ -10,6 +10,8 @@ import { B2Component } from './components/b2/b2.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { initializeApp } from "firebase/app";
+import { firebaseConfig } from '../../firebaseConfig';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +21,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+  constructor(){initializeApp(firebaseConfig);}
   users = [
     {id:1, name: "Ramesh", isSingle:true, salary: 220000},
     {id:2,name: "Suresh", isSingle:true, salary: 2200},

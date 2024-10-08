@@ -1,0 +1,9 @@
+<form class="container" [formGroup]="binForm">
+    <h4>Create the code here:</h4>
+    <input type="text" placeholder="Title" [formControl]="title"/>
+    <h5 class="valied-alert" [hidden]="title.valid || title.untouched"> Enter Correct email </h5>
+    <input type="password" placeholder="password here" [formControl]="password"/>
+    <h5 class="valied-alert" [hidden]="password.valid || password.untouched"> Password must be greater than 6 </h5>
+    <button (click)="login()" class="btn-green" [disabled]="loginForm.invalid">Login</button>
+    <button (click)="reset()" class="btn-red">Reset</button>
+</form>
