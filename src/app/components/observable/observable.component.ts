@@ -54,6 +54,8 @@ export class ObservableComponent implements OnInit{
   ngAfterViewInit() {
     if(this.searchInput)
     {
+
+      // We are converting evenet to Observable
       fromEvent(this.searchInput.nativeElement, "input").subscribe((event:Event)=>{
         const input = (event.target as HTMLInputElement).value;
         console.log("INput Value", input)
