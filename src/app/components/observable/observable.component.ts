@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef, input } from '@angular/core';
-import { map,Observable, toArray, tap, fromEvent, from, switchMap } from 'rxjs';
+import { map,Observable, toArray, tap, fromEvent, from, switchMap, delay, debounceTime } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
 
 interface Profile {
@@ -59,6 +59,19 @@ export class ObservableComponent implements OnInit{
 
       const searchObs = fromEvent(this.searchInput.nativeElement,"input")
       .pipe(
+        // In switchMap one issue is there, Suppose this is my text - krishna, So it will call the API like this, k kr kri kris krish krishn krishna , So totak 7 API's
+        // But This is one is also calling API's 7 times, but after merging at once, Anyways it is better than the map 
+        // But There us one more way we can do that is: -->
+        //  debounce time 
+
+
+        // One more solition is that we can use delay(1000), With this it will call the API after every one second:
+        // delay(1000)
+
+        // The best solition is to use the debounceTime  ( with Optimize way )
+
+
+        debounceTime(1000),
         switchMap((e:Event)=> {
           const input = (e.target as HTMLInputElement).value;
           return ajax(`https://api.github.com/search/users?q=${input}`)
