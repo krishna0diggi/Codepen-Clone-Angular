@@ -8,6 +8,16 @@ interface Profile {
   experience: number; // Added experience field for filtering
 }
 
+interface GitHubUser {
+  login: string;
+  id: number;
+  avatar_url: string;
+}
+
+interface GitHUbResponse{
+  items: GitHubUser[];
+}
+
 @Component({
   selector: 'app-observable',
   standalone: true,
@@ -74,8 +84,9 @@ export class ObservableComponent implements OnInit{
         debounceTime(1000),
         switchMap((e:Event)=> {
           const input = (e.target as HTMLInputElement).value;
-          return ajax(`https://api.github.com/search/users?q=${input}`)
-        })
+          return ajax<GitHUbResponse>(`https://api.github.com/search/users?q=${input}`)
+        }),
+        map(ajaxRes  => ajaxRes.response.items) 
       )
       // searchObs.subscribe((value:any)=>
       // console.log("Subscribe value is this:", value))
