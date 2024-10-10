@@ -12,11 +12,12 @@ import { SignupComponent } from './components/signup/signup.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from '../../firebaseConfig';
+import { ObservableComponent } from './components/observable/observable.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,  NavbarComponent, UserProfileComponent, LoginComponent, SignupComponent, CommonModule, JokeComponent, AComponent,B1Component, B2Component, RouterLink, RouterLinkActive],
+  imports: [RouterOutlet,  NavbarComponent, ObservableComponent ,UserProfileComponent, LoginComponent, SignupComponent, CommonModule, JokeComponent, AComponent,B1Component, B2Component, RouterLink, RouterLinkActive],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
