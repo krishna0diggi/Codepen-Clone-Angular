@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { map,Observable, toArray, tap, fromEvent, from } from 'rxjs';
+import { Component, OnInit, ViewChild, ElementRef, input } from '@angular/core';
+import { map,Observable, toArray, tap, fromEvent, from, switchMap } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
 
 interface Profile {
@@ -55,16 +55,21 @@ export class ObservableComponent implements OnInit{
   ngAfterViewInit() {
     if(this.searchInput)
     {
-      console.log("Current Value is this", this.searchInput)
+      // console.log("Current Value is this", this.searchInput)
 
       const searchObs = fromEvent(this.searchInput.nativeElement,"input")
       .pipe(
-        map((e:any)=> {
-          return ajax(`https://api.github.com/search/users?q=${e.target.value}`)
+        switchMap((e:Event)=> {
+          const input = (e.target as HTMLInputElement).value;
+          return ajax(`https://api.github.com/search/users?q=${input}`)
         })
       )
-      searchObs.subscribe((value:any)=>
-      console.log("Subscribe value is this:", value))
+      // searchObs.subscribe((value:any)=>
+      // console.log("Subscribe value is this:", value))
+      searchObs.subscribe({
+        next: (res) => console.log("Subscribe value is this:", res),
+        error: (err) => console.error("Error fetching data: ",err)
+      })
 
       // We are converting evenet to Observable
       // fromEvent(this.searchInput.nativeElement, "input").subscribe((event:Event)=>{
