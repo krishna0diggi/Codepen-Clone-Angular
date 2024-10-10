@@ -1,5 +1,6 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit, ViewChild, ElementRef, input } from '@angular/core';
-import { map,Observable, toArray, tap, fromEvent, from, switchMap, delay, debounceTime } from 'rxjs';
+import { map,Observable, toArray, tap, fromEvent, from, switchMap, delay, debounceTime , Subscription} from 'rxjs';
 import { ajax } from 'rxjs/ajax';
 
 interface Profile {
@@ -18,10 +19,11 @@ interface GitHUbResponse{
   items: GitHubUser[];
 }
 
+
 @Component({
   selector: 'app-observable',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './observable.component.html',
   styleUrls: ['./observable.component.css'],
 })
@@ -32,6 +34,8 @@ export class ObservableComponent implements OnInit{
   // @ViewChild('search', {static: true}) serach? = ElementRef<HTMLInputElement>
   @ViewChild('search') searchInput?:ElementRef<HTMLInputElement>;
   // profileData$:Observable<Profile[]>
+  users: GitHubUser[] = [];
+  typeAheadSub?:Subscription
 
   ngOnInit(){
     const profileData = new Observable<Profile>((subscriber)=> {
@@ -90,8 +94,11 @@ export class ObservableComponent implements OnInit{
       )
       // searchObs.subscribe((value:any)=>
       // console.log("Subscribe value is this:", value))
-      searchObs.subscribe({
-        next: (res) => console.log("Subscribe value is this:", res),
+      this.typeAheadSub = searchObs.subscribe({
+        next: (res) => {
+        console.log("Subscribe value is this:", res)
+        this.users = res;
+      },
         error: (err) => console.error("Error fetching data: ",err)
       })
 
@@ -100,6 +107,14 @@ export class ObservableComponent implements OnInit{
       //   const input = (event.target as HTMLInputElement).value;
       //   console.log("INput Value", input)
       // })
+    }
+  }
+  
+
+   // To prevent the Memory Leak we use unsubscribe like this:
+  ngDestroy() {
+    if (this.typeAheadSub) {
+      this.typeAheadSub.unsubscribe();
     }
   }
  

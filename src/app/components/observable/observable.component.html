@@ -3,5 +3,10 @@
 type="text"
 placeholder="Type here"
 #search
-
 >
+<div>
+    <div *ngFor="let user of users">
+      <img [src]="user.avatar_url" alt="{{ user.login }}'s avatar" width="50" />
+      {{ user.login }}
+    </div>
+  </div>
