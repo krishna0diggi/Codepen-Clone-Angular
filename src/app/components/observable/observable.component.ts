@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { map,Observable, toArray,  } from 'rxjs';
+import { map,Observable, toArray, tap } from 'rxjs';
 
 interface Profile {
   name: string;
@@ -28,6 +28,10 @@ export class ObservableComponent implements OnInit{
       subscriber.complete();
     }).pipe(
       toArray(),
+
+      // We can use it to log or perform some side effects at various points in the observable chain
+      tap(profiles=> console.log("Profile coming from the TAP Observable", profiles)),
+      
       map((profiles: Profile[])=> {
         return profiles.filter((profile)=>profile.position.includes("Developer") && profile.experience > 2)
         .map((profile)=> profile.name)
@@ -38,5 +42,5 @@ export class ObservableComponent implements OnInit{
       complete: () => console.log('Completed')
     })
   }
-
+ 
 }
