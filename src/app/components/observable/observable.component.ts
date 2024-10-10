@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { map,Observable, toArray, tap, fromEvent } from 'rxjs';
+import { map,Observable, toArray, tap, fromEvent, from } from 'rxjs';
+import { ajax } from 'rxjs/ajax';
 
 interface Profile {
   name: string;
@@ -54,12 +55,22 @@ export class ObservableComponent implements OnInit{
   ngAfterViewInit() {
     if(this.searchInput)
     {
+      console.log("Current Value is this", this.searchInput)
+
+      const searchObs = fromEvent(this.searchInput.nativeElement,"input")
+      .pipe(
+        map((e:any)=> {
+          return ajax(`https://api.github.com/search/users?q=${e.target.value}`)
+        })
+      )
+      searchObs.subscribe((value:any)=>
+      console.log("Subscribe value is this:", value))
 
       // We are converting evenet to Observable
-      fromEvent(this.searchInput.nativeElement, "input").subscribe((event:Event)=>{
-        const input = (event.target as HTMLInputElement).value;
-        console.log("INput Value", input)
-      })
+      // fromEvent(this.searchInput.nativeElement, "input").subscribe((event:Event)=>{
+      //   const input = (event.target as HTMLInputElement).value;
+      //   console.log("INput Value", input)
+      // })
     }
   }
  
